@@ -1,0 +1,35 @@
+{% set name = "rmlst" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: "{{ name | lower }}"
+  version: "{{ version }}"
+
+source:
+  # Example: Download the source tarball from GitHub.
+  url: https://github.com/ssi-dk/rmlst/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: f6601bb59940d876cbfa0f5f838f30fd5131bd5d8a05028ea5b16cec4c95788e
+
+build:
+  number: 0
+
+requirements:
+  host:
+    - python
+  run:
+    - python
+
+test:
+  commands:
+    - rmlst
+
+about:
+  home: https://github.com/ssi-dk/{{ name }}
+  license: MIT
+  summary: "rMLST does science"
+
+extra:
+  recipe-maintainers:
+    - githubz0r
+
+
