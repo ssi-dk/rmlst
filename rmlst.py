@@ -19,11 +19,17 @@ parser.add_argument(
   type = str,
   default = 'sample.fasta',
   help='assembly contig filename (FASTA format)')
+
+parser.add_argument(
+  '--uri', '-u',
+  type = str,
+  default = 'https://rest.pubmlst.org/db/pubmlst_rmlst_seqdef_kiosk/schemes/1/sequence',
+  help='scheme uri')
 args = parser.parse_args()
 
 
 def get_rmlst_json(assembly_file):
-  uri = 'https://rest.pubmlst.org/db/pubmlst_rmlst_seqdef_kiosk/schemes/1/sequence'
+  uri = args.uri
   with open(assembly_file, 'r') as x: 
     fasta = x.read()
   payload = '{"base64":true,"details":true,"sequence":"' + base64.b64encode(fasta.encode()).decode() + '"}'
@@ -33,13 +39,11 @@ def get_rmlst_json(assembly_file):
     try: 
       data['taxon_prediction']
     except KeyError:
-      print(" - No rMLST match!")
+      print("No rMLST match")
       sys.exit(0)
 
   else:
-    #data = None
-    print(response.text)
-    sys.exit()
+    raise requests.HTTPError(response.text)
   return data
 
 if __name__ == "__main__":
