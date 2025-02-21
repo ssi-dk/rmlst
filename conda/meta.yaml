@@ -1,5 +1,5 @@
 {% set name = "rmlst" %}
-{% set version = "0.0.4" %}
+{% set version = "0.0.6" %}
 
 package:
   name: "{{ name | lower }}"
@@ -8,7 +8,7 @@ package:
 source:
   # Example: Download the source tarball from GitHub.
   url: https://github.com/ssi-dk/rmlst/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 0a940335964bc31fc76c70b67728f5e6912c7aa0aceaf3cc4643c89b27c50859
+  sha256: 37d4bab33656c8037f88414922018353d3d64bc9fde8681922a2a36d4c8c74c1
 
 build:
   number: 0
@@ -16,8 +16,10 @@ build:
 requirements:
   host:
     - python
+    - requests
   run:
     - python
+    - requests
 
 test:
   commands:
