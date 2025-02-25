@@ -5,6 +5,7 @@ import argparse
 import base64
 import os
 import json
+import subprocess
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -40,6 +41,8 @@ def get_rmlst_json(assembly_file):
       data['taxon_prediction']
     except KeyError:
       print("No rMLST match")
+      output_file = args.putput
+      process = subprocess.Popen(f'touch {output_file}', stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True, env=os.environ, encoding='utf-8')
       sys.exit(0)
 
   else:
