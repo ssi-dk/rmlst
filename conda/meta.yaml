@@ -8,7 +8,7 @@ package:
 source:
   # Example: Download the source tarball from GitHub.
   url: https://github.com/ssi-dk/rmlst/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 37d4bab33656c8037f88414922018353d3d64bc9fde8681922a2a36d4c8c74c1
+  sha256: 6b37c83a2ee34a3583bac3bf62d80d07294eb18295e80027e1cf3c7a132b1b43
 
 build:
   number: 0
